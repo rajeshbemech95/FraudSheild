@@ -1,0 +1,109 @@
+{
+  "entities": {
+    "Case": {
+      "title": "Investigation Case",
+      "description": "Per-user fraud investigation record with verified observations, risk level, prioritized emergency actions, and timestamps.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Firebase Authentication UID of the owner."
+        },
+        "riskLevel": {
+          "type": "string",
+          "enum": ["CRITICAL", "HIGH", "SUSPICIOUS", "LOW", "SAFE"],
+          "description": "Evaluated threat risk level."
+        },
+        "headline": {
+          "type": "string",
+          "description": "Concise summary headline of the investigation."
+        },
+        "summary": {
+          "type": "string",
+          "description": "Detailed factual assessment."
+        },
+        "stage": {
+          "type": "string",
+          "enum": ["RECEIVED", "CLICKED_LINK", "ENTERED_OTP", "SENT_MONEY"],
+          "description": "Incident stage reported by the user."
+        },
+        "rawInputSnippet": {
+          "type": "string",
+          "description": "Redacted or short snippet for display."
+        },
+        "hasScreenshot": {
+          "type": "boolean",
+          "description": "Whether an image or screenshot was attached."
+        },
+        "verifiedObservations": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Concrete facts observed in the message or screenshot."
+        },
+        "aiInferences": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Inferred hypotheses labeled strictly as inferences."
+        },
+        "unknowns": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Missing verification details or unconfirmed sender claims."
+        },
+        "prioritizedActions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "title": { "type": "string" },
+              "description": { "type": "string" },
+              "isUrgent": { "type": "boolean" },
+              "isCompleted": { "type": "boolean" }
+            },
+            "required": ["id", "title", "description", "isUrgent", "isCompleted"]
+          },
+          "description": "Actionable defense tasks."
+        },
+        "emergencyTriggered": {
+          "type": "boolean",
+          "description": "Whether emergency helpline 1930 flow was triggered."
+        },
+        "isDemoResult": {
+          "type": "boolean",
+          "description": "Whether this case was generated in demo mode."
+        },
+        "analysisSource": {
+          "type": "string",
+          "enum": ["LOCAL_RULE", "REMOTE_AI", "DEMO", "OFFLINE_FALLBACK"],
+          "description": "Source engine that triaged this case."
+        },
+        "userNotes": {
+          "type": "string",
+          "description": "Optional notes entered by the user."
+        },
+        "timestamp": {
+          "type": "integer",
+          "description": "Client timestamp of the case."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Creation timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp."
+        }
+      },
+      "required": ["userId", "riskLevel", "headline", "summary", "stage", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}/cases/{caseId}": {
+      "schema": "Case",
+      "description": "Per-user fraud investigation cases."
+    }
+  }
+}

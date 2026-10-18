@@ -1,0 +1,46 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isValidRiskLevel(risk) {
+      return risk in ['CRITICAL', 'HIGH', 'SUSPICIOUS', 'LOW', 'SAFE'];
+    }
+
+    function isValidStage(stage) {
+      return stage in ['RECEIVED', 'CLICKED_LINK', 'ENTERED_OTP', 'SENT_MONEY'];
+    }
+
+    function isValidSource(src) {
+      return src in ['LOCAL_RULE', 'REMOTE_AI', 'DEMO', 'OFFLINE_FALLBACK'];
+    }
+
+    function isValidCase(userId) {
+      let data = request.resource.data;
+      return data.userId == userId
+          && data.userId == request.auth.uid
+          && data.riskLevel is string && isValidRiskLevel(data.riskLevel)
+          && data.headline is string && data.headline.size() > 0 && data.headline.size() <= 300
+          && data.summary is string && data.summary.size() > 0 && data.summary.size() <= 2000
+          && data.stage is string && isValidStage(data.stage)
+          && (!('analysisSource' in data) || (data.analysisSource is string && isValidSource(data.analysisSource)))
+          && (!('timestamp' in data) || (data.timestamp is int || data.timestamp is number));
+    }
+
+    match /users/{userId}/cases/{caseId} {
+      allow read: if isOwner(userId);
+      allow create: if isOwner(userId) && isValidCase(userId);
+      allow update: if isOwner(userId)
+                    && request.resource.data.userId == resource.data.userId
+                    && request.resource.data.userId == request.auth.uid;
+      allow delete: if isOwner(userId);
+    }
+  }
+}
