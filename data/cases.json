@@ -1,0 +1,37 @@
+[
+  {
+    "riskLevel": "CRITICAL",
+    "headline": "Law Enforcement / Customs Digital Arrest Extortion",
+    "summary": "Impersonator claimed victim package contained illicit drugs and coerced immediate fund transfer to avoid police arrest.",
+    "stage": "RECEIVED",
+    "timestamp": 1729272000000,
+    "verifiedObservations": [
+      "Victim received threatening WhatsApp call and fake arrest warrant",
+      "Demanded payment via UPI transfer"
+    ],
+    "aiInferences": [
+      "Matches active Indian Cybercrime Coordination Centre (I4C) high-priority alert for Digital Arrest syndicates"
+    ],
+    "unknowns": [
+      "Actual identity behind VoIP call numbers"
+    ],
+    "prioritizedActions": [
+      {
+        "id": "act_1",
+        "title": "Do not transfer money or share Aadhaar/OTP",
+        "description": "Police and customs never conduct digital arrests over video calls or demand money.",
+        "isUrgent": true,
+        "isCompleted": false
+      },
+      {
+        "id": "act_2",
+        "title": "Dial 1930 to report the extortion numbers",
+        "description": "National Cyber Crime Helpline blocks scammer numbers immediately.",
+        "isUrgent": true,
+        "isCompleted": true
+      }
+    ],
+    "userNotes": "Reported to 1930 Helpline. Ticket generated.",
+    "analysisSource": "REMOTE_AI"
+  }
+]

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources>
-    <string name="firebase_database_id">ai-studio-android-fraudshi-8e7fb439-1613-40af-a6e1-158a0ea67553</string>
+    <string name="firestore_database_id" translatable="false">ai-studio-android-fraudshi-8e7fb439-1613-40af-a6e1-158a0ea67553</string>
 </resources>

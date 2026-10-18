@@ -14,7 +14,11 @@ import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.tasks.await
 
 class FirestoreCaseRepository(
-    private val firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
+    private val firestore: FirebaseFirestore = try {
+        FirebaseFirestore.getInstance("ai-studio-android-fraudshi-8e7fb439-1613-40af-a6e1-158a0ea67553")
+    } catch (e: Exception) {
+        FirebaseFirestore.getInstance()
+    }
 ) {
 
     fun observeCases(userId: String): Flow<List<InvestigationResult>> = callbackFlow {

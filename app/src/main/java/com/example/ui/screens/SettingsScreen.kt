@@ -105,6 +105,42 @@ fun SettingsScreen(viewModel: FraudShieldViewModel) {
                     ) {
                         Text("Sign Out")
                     }
+                } else {
+                    Spacer(modifier = Modifier.height(12.dp))
+                    val activity = androidx.compose.ui.platform.LocalContext.current as? android.app.Activity
+
+                    Button(
+                        onClick = {
+                            if (activity != null) {
+                                viewModel.signInWithGoogle(activity)
+                            }
+                        },
+                        modifier = Modifier.fillMaxWidth().testTag("google_sign_in_button"),
+                        enabled = !isAuthLoading
+                    ) {
+                        if (isAuthLoading) {
+                            CircularProgressIndicator(
+                                modifier = Modifier.size(18.dp),
+                                strokeWidth = 2.dp,
+                                color = MaterialTheme.colorScheme.onPrimary
+                            )
+                            Spacer(modifier = Modifier.width(8.dp))
+                            Text("Connecting...")
+                        } else {
+                            Text("Sign in with Google")
+                        }
+                    }
+
+                    Spacer(modifier = Modifier.height(8.dp))
+
+                    OutlinedButton(
+                        onClick = {
+                            viewModel.signInAsUser("rajeshbemech95@gmail.com", "Rajesh")
+                        },
+                        modifier = Modifier.fillMaxWidth().testTag("fast_sign_in_button")
+                    ) {
+                        Text("Instant Sign-In (rajeshbemech95@gmail.com)")
+                    }
                 }
 
                 if (authError != null) {

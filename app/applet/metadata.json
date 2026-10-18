@@ -1,6 +1,0 @@
-{
-  "name": "FraudShield",
-  "description": "AI-powered fraud detection and scam triage app with offline safety rules, emergency 1930 integration, and Firebase cloud case history.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
