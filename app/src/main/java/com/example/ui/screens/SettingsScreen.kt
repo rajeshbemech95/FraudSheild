@@ -163,7 +163,7 @@ fun SettingsScreen(viewModel: FraudShieldViewModel) {
                 }
 
                 SettingRowItem(
-                    title = "Firebase AI Logic (Gemini 2.5 Flash)",
+                    title = "Firebase AI Logic (Gemini 3 Flash)",
                     desc = "Authoritative multimodal reasoning for threat detection and classification."
                 )
 

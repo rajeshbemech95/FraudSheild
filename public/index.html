@@ -795,7 +795,7 @@
           Architecture & Privacy
         </div>
         <div style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
-          • <strong>Multimodal AI:</strong> Uses Google Gemini 2.5 Flash with structured security classification schemas.<br>
+          • <strong>Multimodal AI:</strong> Uses Google Gemini 3 Flash with structured security classification schemas.<br>
           • <strong>Local Safety Engine:</strong> Deterministic fail-safe rules that guarantee financial loss emergencies (transferred money) are never down-voted.<br>
           • <strong>Data Privacy:</strong> Communications and screenshot bytes are processed solely for threat classification and never sold or shared.
         </div>
@@ -810,8 +810,10 @@
   <script>
     // Firebase Web Configuration
     const firebaseConfig = {
-      projectId: "ai-studio-android-fraudshi-8e7fb439-1613-40af-a6e1-158a0ea67553",
-      authDomain: "ai-studio-android-fraudshi-8e7fb439-1613-40af-a6e1-158a0ea67553.firebaseapp.com",
+      apiKey: "AIzaSyC0yqNQB7hmsLV6bVZ9DcNxQe_ryfoGA_U",
+      authDomain: "gen-lang-client-0688789022.firebaseapp.com",
+      projectId: "gen-lang-client-0688789022",
+      storageBucket: "gen-lang-client-0688789022.firebasestorage.app"
     };
 
     let currentUser = null;
@@ -998,7 +1000,7 @@
       document.getElementById("result-summary").textContent = result.summary;
 
       document.getElementById("result-engine-badge").textContent =
-        `Source: ${result.analysisSource === 'REMOTE_AI' ? 'Gemini 2.5 Flash' : 'Deterministic Safety Rule'}`;
+        `Source: ${result.analysisSource === 'REMOTE_AI' ? 'Gemini 3 Flash' : 'Deterministic Safety Rule'}`;
 
       const verifiedUl = document.getElementById("result-verified-list");
       verifiedUl.innerHTML = (result.verifiedObservations || []).map(o => `<li>${o}</li>`).join("");

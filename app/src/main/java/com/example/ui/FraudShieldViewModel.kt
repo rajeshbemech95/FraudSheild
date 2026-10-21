@@ -213,7 +213,7 @@ class FraudShieldViewModel(application: Application) : AndroidViewModel(applicat
         viewModelScope.launch {
             try {
                 val credentialManager = CredentialManager.create(activity)
-                val clientId = "100926108091-fraudshield.apps.googleusercontent.com"
+                val clientId = "604840034883-u95ohou89e2icmggef64g22ne3m4i34p.apps.googleusercontent.com"
                 val signInOption = GetSignInWithGoogleOption.Builder(serverClientId = clientId).build()
                 val request = GetCredentialRequest.Builder().addCredentialOption(signInOption).build()
                 val result = credentialManager.getCredential(activity, request)

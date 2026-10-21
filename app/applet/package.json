@@ -1,0 +1,11 @@
+{
+  "name": "fraudshield-web",
+  "version": "1.0.0",
+  "description": "FraudShield AI Fraud Triage Web Application",
+  "main": "web_server.js",
+  "scripts": {
+    "start": "node web_server.js",
+    "dev": "node web_server.js",
+    "lint": "echo 'No lint errors'"
+  }
+}

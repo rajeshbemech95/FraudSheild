@@ -23,7 +23,7 @@ class FirebaseAiInvestigationRepository {
 
     private val generativeModel by lazy {
         Firebase.ai.generativeModel(
-            modelName = "gemini-2.5-flash",
+            modelName = "gemini-3-flash-preview",
             generationConfig = generationConfig {
                 responseMimeType = "application/json"
             }

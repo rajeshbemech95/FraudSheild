@@ -178,7 +178,7 @@ User input text: ${text || "None provided; analyze screenshot if present."}
   });
 
   return new Promise((resolve) => {
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
     const req = https.request(url, {
       method: "POST",
       headers: {
